@@ -5,7 +5,8 @@
 - [ ] React 또는 Vue.js 를 활용한 SPA 개발 경험 (2년 이상)
 - [ ] REST API 를 활용한 Web 개발 경험
 - [ ] Visualization Library 활용 경험 (Chart.js, D3.js, etc...)
-- [ ] webpack, Babel 등을 이용한 프로젝트 환경 구성 경험
+- [x] webpack, Babel 등을 이용한 프로젝트 환경 구성 경험
+  - Webpack, Babel으로 포트폴리오 세팅
 - [ ] UI 테스트 구축 및 개발 경험
 - [ ] TypeScript 개발 경험
 - [ ] Git, Zeplin, Jenkins, Docker 등 개발 및 협업에 필요한 도구의 사용에 능숙하신 분
