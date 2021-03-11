@@ -6,6 +6,7 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 - 아는 기술 스택을 최대한 보여줄 수 있도록
 - 요구하는 기술 스택을 최대한 만족할 수 있도록
 
+## 요구하는 기술 및 경험
 - [ ] HTML5, CSS3 기본 지식 및 마크업 능력
 - [ ] JavaScript 사용에 능숙하며 ES6+ 표준 스펙을 활용한 개발 경험
 - [ ] React 또는 Vue.js 를 활용한 SPA 개발 경험 (2년 이상)
