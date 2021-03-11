@@ -24,4 +24,6 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
   - 시국에 맞는 코로나19 Open API
   - 빠른 주기로 업데이트되는 암호화폐 Open API
 - 동적인 데이터를 다루는 암호화폐 Open API가 더 적합하다고 생각하여 이를 채택
-
+- Typescript 세팅
+- eslint, prettier 세팅
+- jest, rtl 세팅 후 간단한 테스트 작성
