@@ -11,5 +11,5 @@ describe('App component', () => {
     const message = 'React!';
 
     expect(screen.getByText(message)).toBeInTheDocument();
-  })
+  });
 });

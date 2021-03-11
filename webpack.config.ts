@@ -8,7 +8,7 @@ module.exports = {
   mode: production ? 'production' : 'development',
   devtool: production ? 'hidden-source-map' : 'inline-source-map',
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -17,7 +17,7 @@ module.exports = {
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        }
+        },
       },
       {
         test: /\.(ts|tsx)$/,
@@ -25,33 +25,33 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
-          }
+          },
         ],
       },
       {
         test: /\.html$/,
         use: [
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: { minimize: true },
-          }
-        ]
+          },
+        ],
       },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new HtmlWebPackPlugin({
-      template: "./src/index.html",
-      filename: "./index.html",
+      template: './src/index.html',
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css",
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
     new ErrorOverlayPlugin(),
-  ]
+  ],
 };
