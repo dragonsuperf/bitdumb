@@ -20,4 +20,8 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 - [ ] 클라우드 서비스 이용 경험 (AWS, GCP, Azure, etc)
 
 ## 2021-03-11
-- 
+- Visualization Library를 활용하기 좋은 Open API를 선정하기 위한 후보
+  - 시국에 맞는 코로나19 Open API
+  - 빠른 주기로 업데이트되는 암호화폐 Open API
+- 동적인 데이터를 다루는 암호화폐 Open API가 더 적합하다고 생각하여 이를 채택
+
