@@ -1,8 +1,12 @@
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ErrorOverlayPlugin = require('error-overlay-webpack-plugin');
+
+const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  devtool: 'source-map',
+  mode: production ? 'production' : 'development',
+  devtool: production ? 'hidden-source-map' : 'inline-source-map',
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
@@ -48,5 +52,6 @@ module.exports = {
       filename: "[name].css",
       chunkFilename: "[id].css",
     }),
+    new ErrorOverlayPlugin(),
   ]
 };
