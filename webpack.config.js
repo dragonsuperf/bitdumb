@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   devtool: 'source-map',
   resolve: {
-    extensions: [".ts", ".tsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   module: {
     rules: [
@@ -38,10 +38,6 @@ module.exports = {
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       }
     ]
-  },
-  externals: {
-    "react": "React",
-    "react-dom": "ReactDOM",
   },
   plugins: [
     new HtmlWebPackPlugin({
