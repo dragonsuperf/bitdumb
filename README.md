@@ -29,5 +29,24 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 - jest, rtl 세팅 후 간단한 테스트 작성
 - Visualization Library 후보
   - d3 ( React와 같이 사용하려면 신경을 써야하는 부분이 있다 ) 
-  - toast-ui-chart ( 줌 기능이 이미 존재한다, 디자인이 괜찮다 )
+  - @toast-ui/react-chart ( 줌 기능이 이미 존재한다, 디자인이 괜찮다 )
   - react-chartjs-2
+
+## 2021-03-12
+
+### Data Visualization Library 결정
+@toast-ui/react-chart가 Stock chart로 많이 쓰이는 candle stick chart를 기본 지원하므로 이를 채택하기로 결정
+
+### 하지만 문제 발생..
+```TypeError: y[t] is not a constructor``` 라는 에러와 함께 런타임 에러가 발생 😥  
+무엇이 문제인지 파악하기 위해 가장 의심되는 설정을 바꿔서 시도해보았고, CRA로 새로 세팅을하고 시도하니까 멀쩡하게 잘됨  
+어제 eslint, prettier 설정에 애를 먹었고 도중에 의존성이 계속 말썽이였기 때문에 번들러인 webpack 설정 중 어느것이 말썽을 일으켰을 것이라고 추측.. ( 본인의 설정을 믿지 못했음 )  
+무엇이 문제인지 쉽게 찾아지지 않아서 webpack, babel, typescript, react 전부 다시 세팅해서 시도해보았지만 안됨  
+CRA에서는 되고 직접 세팅하면 동작하지 않기 때문에 CRA 설정과 직접 세팅의 차이점을 확인해가면서 시도해보기로 결정하고 eject 명령으로 CRA의 설정파일을 노출 시킴   
+가장 의심되던 webpack은 직접 세팅이 webpack은 5.24.4 버전, CRA이 webpack은 4.44.2 버전이었고, 직접 세팅의 webpack을 4.44.2 버전으로 다운그레이드 하니 정상 동작하는 것을 확인
+
+### Today I did
+- webpack version을 4.44.2로 다운그레이드
+- Toast ui chart로 candle stick chart 예제 컴포넌트 작성
+- 혹시 도움이 될까 싶어서 해당 레포지토리에 이슈를 남김
+  - https://github.com/nhn/tui.chart/issues/619
