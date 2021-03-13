@@ -50,3 +50,21 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 - Toast ui chart로 candle stick chart 예제 컴포넌트 작성
 - 혹시 도움이 될까 싶어서 해당 레포지토리에 이슈를 남김
   - https://github.com/nhn/tui.chart/issues/619
+
+## 2021-03-13
+
+### API와의 통신을 위해 axios 사용
+axios를 사용한 이유는? (굉장히 단순한 이유)
+- Ready to use이기 때문에 빠르게 개발할 수 있다
+- 익숙하다
+
+### Bithumb의 Open Api 중 CandleStick API를 사용해 암호화폐의 정보를 가져오는 로직을 구현
+- 일단 BTC만 가져올 수 있도록 해뒀음
+
+### Open Api에서 가져온 데이터를 차트에 그릴 수 있는 데이터로 변환하는 메소드를 구현
+- 하지만 정상적으로 동작하지 않는다.. 😪😪😪
+- 데이터의 범위가 작을 때 차트에 정상적으로 그려지지 않는 것 같다.. ( @toast-ui/chart의 문제인가? )
+
+### 특이사항
+- 오래동안 사용하지 않았던 랩탑에 개발환경을 새로 세팅하고 코딩을 했는데, 플러그인과 린트가 어째서인지 제대로 동작하지 않는다..
+- 그래서 오늘 커밋한 코드는 정말 엉망이다
