@@ -1,46 +1,99 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BoxPlotChart } from '@toast-ui/react-chart';
 import '@toast-ui/chart/dist/toastui-chart.css';
+import { TickPrice } from '../App';
 
-function CandleStickChart() {
+interface CandleStickChartProps {
+  currencyDatas: TickPrice[];
+}
+
+interface Series {
+  name: string;
+  data: number[][];
+}
+
+interface ChartData {
+  categories: string[];
+  series: Series[];
+}
+
+function CandleStickChart({ currencyDatas }: CandleStickChartProps) {
+  const [chartDatas, setChartDatas] = useState<ChartData>();
+
+  useEffect(() => {
+    convertCurrencyDataToChartData();
+  }, [currencyDatas]);
+
+  useEffect(() => {
+    console.log(chartDatas);
+  }, [chartDatas]);
+
+  const convertCurrencyDataToChartData = () => {
+    const newCategories: string[] = [];
+    const lowSeriesDatas: number[][] = [];
+    const highSeriesDatas: number[][] = [];
+    
+    if ( currencyDatas === undefined ) return;
+    currencyDatas.map((data) => {
+      newCategories.push(data.tickDate.toString());
+
+      const name: string = data.startPrice > data.endPrice ? 'high' : 'low';
+      const datas = [
+        data.minPrice,
+        data.startPrice,
+        (data.startPrice + data.endPrice) / 2,
+        data.endPrice,
+        data.maxPrice,
+      ];
+      if (name === 'low')
+        lowSeriesDatas.push(datas);
+      else 
+        highSeriesDatas.push(datas);
+    });
+    
+    const newSeries: Series[] = [];
+    newSeries.push({ name: 'low', data: lowSeriesDatas });
+    newSeries.push({ name: 'high', data: highSeriesDatas });
+    console.log(newSeries);
+    setChartDatas({ 
+      categories: newCategories,
+      series: newSeries,
+    });
+  }
+
   const data = {
-    categories: ['Budget', 'Income', 'Expenses', 'Debt'],
+    categories: ["1615643340000", "1615643400000", "1615643460000", "1615643520000", "1615643580000", "1615643640000", "1615643700000", "1615643760000", "1615643820000"],
     series: [
       {
         name: '2020',
         data: [
-          [1000, 2500, 3714, 5500, 7000],
-          [1000, 2750, 4571, 5250, 8000],
-          [3000, 4000, 4714, 6000, 7000],
-          [1000, 2250, 3142, 4750, 6000],
-        ],
-        outliers: [
-          [0, 14000],
-          [2, 10000],
-          [3, 9600],
+          [1292, 1293, 1295.5, 1298, 1298],
+          [1296, 1297, 1298.5, 1300, 1300],
+          [1298, 1298, 1299, 1300, 1302],
+          [1300, 1300, 1301.5, 1303, 1303]
         ],
       },
       {
         name: '2021',
         data: [
-          [2000, 4500, 6714, 11500, 13000],
-          [3000, 5750, 7571, 8250, 9000],
-          [5000, 8000, 8714, 9000, 10000],
-          [7000, 9250, 10142, 11750, 12000],
+          [1296, 1299, 1297.5, 1296, 1299],
+          [1303, 1306, 1304.5, 1303, 1306],
         ],
-        outliers: [[1, 14000]],
       },
     ],
   };
   const options = {
     chart: {
-      height: 500,
+      height: 600,
       width: 1000,
-      title: 'Monthly Revenue',
+      title: 'Test!',
     },
   };
 
-  return <BoxPlotChart data={data} options={options} />;
+  if (chartDatas !== undefined)
+    return <BoxPlotChart data-testid="chart" data={chartDatas} options={options} />;
+  else
+    return <></>;
 }
 
 export default CandleStickChart;
