@@ -33,6 +33,10 @@ function CandleStickChart({ currencyDatas }: ChartProps) {
           fallingColor: { strokeWidth: 0, fill: '#0051c7' },
           risingColor: { strokeWidth: 0, fill: '#a52714' },
         },
+        hAxis: {
+          title: 'test',
+          ticks: [22058, 22080, 22100, 22120],
+        },
       }}
       rootProps={{ 'data-testid': '2' }}
     />

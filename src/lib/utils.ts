@@ -1,14 +1,14 @@
 // eslint-disable-next-line import/prefer-default-export
-export const convertTimestampToDateString = (time: number, format: string): string => {
+export const convertTimestampToDate = (time: number, format: string): Date => {
   const newDate = new Date(time);
-  let resultDate = '';
+  const resultDate = new Date();
 
-  if (format.includes('Y')) resultDate += newDate.getFullYear().toString();
-  if (format.includes('M')) resultDate += newDate.getMonth().toString();
-  if (format.includes('D')) resultDate += newDate.getDay().toString();
-  if (format.includes('H')) resultDate += newDate.getHours().toString();
-  if (format.includes('M')) resultDate += newDate.getMinutes().toString();
-  if (format.includes('S')) resultDate += newDate.getSeconds().toString();
+  if (format.includes('Y')) resultDate.setFullYear(newDate.getFullYear());
+  if (format.includes('M')) resultDate.setMonth(newDate.getMonth());
+  if (format.includes('D')) resultDate.setDate(newDate.getDay());
+  if (format.includes('H')) resultDate.setHours(newDate.getHours());
+  if (format.includes('M')) resultDate.setMinutes(newDate.getMinutes());
+  if (format.includes('S')) resultDate.setSeconds(newDate.getSeconds());
 
   return resultDate;
 };
