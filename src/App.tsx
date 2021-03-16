@@ -7,7 +7,7 @@ import CandleStickChart from './components/CandleStickChart';
 axios.defaults.baseURL = 'https://api.bithumb.com/public';
 
 export interface TickPrice {
-  tickDate: Date;
+  tickDate: string;
   minPrice: number;
   startPrice: number;
   endPrice: number;
@@ -26,18 +26,21 @@ function App() {
 
   useEffect(() => {
     if (lastMessage !== null) {
-      const data = JSON.parse(lastMessage.data);
-      const newDate = `${data.date} ${data.time}`;
-      const newCurrencyData = selectedCurrencyDatas;
-      newCurrencyData.unshift();
-      newCurrencyData.push({
-        tickDate: new Date(Moment(newDate).format('HH:mm:SS')),
-        minPrice: Number(data.lowPrice),
-        startPrice: Number(data.openPrice),
-        endPrice: Number(data.closePrice),
-        maxPrice: Number(data.highPrice),
-      })
-      setSelectedCurrencyDatas(newCurrencyData);
+      const data = JSON.parse(lastMessage.data).content;
+      if (data !== null && data !== undefined) {
+        const newDate = Moment(`${data.date} ${data.time}`).format('HH:mm:ss');
+        const newCurrencyData = selectedCurrencyDatas;
+        console.log(data);
+        newCurrencyData.shift();
+        newCurrencyData.push({
+          tickDate: newDate,
+          minPrice: Number(data.lowPrice),
+          startPrice: Number(data.openPrice),
+          endPrice: Number(data.closePrice),
+          maxPrice: Number(data.highPrice),
+        });
+        setSelectedCurrencyDatas(newCurrencyData);
+      }
     }
   }, [lastMessage]);
 
@@ -56,7 +59,7 @@ function App() {
   const convertDataToTickPrice = (datas: any): TickPrice[] => {
     return datas.map((data: any) => {
       return {
-        tickDate: Moment(data[0]).format('HH:mm:SS'),
+        tickDate: Moment(data[0]).format('HH:mm:ss'),
         minPrice: Number(data[4]),
         startPrice: Number(data[1]),
         endPrice: Number(data[2]),
