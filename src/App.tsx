@@ -25,7 +25,20 @@ function App() {
   const { sendMessage, lastMessage, readyState } = useWebSocket(SOCKET_URL);
 
   useEffect(() => {
-    console.log(lastMessage);
+    if (lastMessage !== null) {
+      const data = JSON.parse(lastMessage.data);
+      const newDate = `${data.date} ${data.time}`;
+      const newCurrencyData = selectedCurrencyDatas;
+      newCurrencyData.unshift();
+      newCurrencyData.push({
+        tickDate: new Date(Moment(newDate).format('HH:mm:SS')),
+        minPrice: Number(data.lowPrice),
+        startPrice: Number(data.openPrice),
+        endPrice: Number(data.closePrice),
+        maxPrice: Number(data.highPrice),
+      })
+      setSelectedCurrencyDatas(newCurrencyData);
+    }
   }, [lastMessage]);
 
   useEffect(() => {
@@ -62,7 +75,6 @@ function App() {
           currentData.slice(currentDataLength - 100, currentDataLength - 1),
         );
         setSelectedCurrencyDatas(newTickPriceList);
-        setTimeout(getCurrentCryptoCurrency, 15000);
       })
       .catch((error) => console.log(error));
   };
