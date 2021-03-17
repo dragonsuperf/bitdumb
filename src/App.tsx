@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import { BoxPlotChart } from '@toast-ui/react-chart';
-import DoughnutChart from './components/DoughnutChart';
-
-function App() {
-  const data = {
-    categories: ['Budget', 'Income', 'Expenses', 'Debt'],
-    series: [
-      {
-        name: '2020',
-        data: [
-          [1000, 2500, 3714, 5500, 7000],
-          [1000, 2750, 4571, 5250, 8000],
-          [3000, 4000, 4714, 6000, 7000],
-          [1000, 2250, 3142, 4750, 6000],
-        ],
-        outliers: [
-          [0, 14000],
-          [2, 10000],
-          [3, 9600],
-        ],
-      },
-      {
-        name: '2021',
-        data: [
-          [2000, 4500, 6714, 11500, 13000],
-          [3000, 5750, 7571, 8250, 9000],
-          [5000, 8000, 8714, 9000, 10000],
-          [7000, 9250, 10142, 11750, 12000],
-        ],
-        outliers: [[1, 14000]],
-      },
-    ],
-  };
-
-  const options = {
-    chart: {
-      height: 500,
-      width: 1000,
-      title: 'Monthly Revenue',
-    },
-  };
-
-  const chart = <BoxPlotChart options={options} data={data} />;
-=======
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Moment from 'moment';
@@ -66,6 +20,7 @@ function App() {
 
   const [currency, setCurrency] = useState('BTC');
   const [selectedCurrencyDatas, setSelectedCurrencyDatas] = useState<TickPrice[]>([]);
+  const [currentPrice, setCurrentPrice] = useState<TickPrice>();
   const candleStickApi = `/candlestick/${currency}_KRW/1m`;
 
   const { sendMessage, lastMessage, readyState } = useWebSocket(SOCKET_URL);
@@ -74,17 +29,41 @@ function App() {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data).content;
       if (data !== null && data !== undefined) {
-        const newDate = Moment(`${data.date} ${data.time}`).format('HH:mm:ss');
-        const newCurrencyData = selectedCurrencyDatas;
-        console.log(data);
-        newCurrencyData.shift();
-        newCurrencyData.push({
-          tickDate: newDate,
-          minPrice: Number(data.lowPrice),
+        const newDate = Moment(`${data.date} ${data.time}`);
+        let newTickData = {
+          tickDate: newDate.format('HH:mm:ss'),
+          minPrice: Number(data.openPrice),
           startPrice: Number(data.openPrice),
           endPrice: Number(data.closePrice),
-          maxPrice: Number(data.highPrice),
-        });
+          maxPrice: Number(data.closePrice),
+        };
+
+        const newCurrencyData = selectedCurrencyDatas;
+
+        if (currentPrice === undefined) newCurrencyData.shift();
+        else if (newDate.format('ss') === '00') {
+          newTickData = {
+            ...newTickData,
+            minPrice: Math.min(newTickData.minPrice, currentPrice.endPrice),
+            startPrice: currentPrice.startPrice,
+            endPrice: currentPrice.endPrice,
+            maxPrice: Math.max(newTickData.maxPrice, currentPrice.endPrice),
+          };
+          newCurrencyData.shift();
+        } else {
+          newTickData = {
+            ...newTickData,
+            minPrice: Math.min(newTickData.minPrice, currentPrice.endPrice),
+            startPrice: currentPrice.startPrice,
+            endPrice: currentPrice.endPrice,
+            maxPrice: Math.max(newTickData.maxPrice, currentPrice.endPrice),
+          };
+          newCurrencyData.pop();
+        }
+        console.log(newTickData);
+        setCurrentPrice(newTickData);
+
+        newCurrencyData.push(newTickData);
         setSelectedCurrencyDatas(newCurrencyData);
       }
     }
@@ -131,17 +110,11 @@ function App() {
   useEffect(() => {
     getCurrentCryptoCurrency();
   }, []);
->>>>>>> 9a5cb9474d9687f5a962939f713a9f316649bada
 
   return (
     <>
       <div>React!</div>
-<<<<<<< HEAD
-      <DoughnutChart />
-      {chart}
-=======
       <CandleStickChart currencyDatas={selectedCurrencyDatas} />
->>>>>>> 9a5cb9474d9687f5a962939f713a9f316649bada
     </>
   );
 }

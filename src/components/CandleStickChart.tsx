@@ -10,13 +10,14 @@ function CandleStickChart({ currencyDatas }: ChartProps) {
   const tickPriceToChartData = () => {
     if (currencyDatas === undefined) return false;
 
-    const chartData = [];
-    chartData.push(['Date', 'Price', 'startPrice', 'endPrice', 'maxPrice']);
+    const chartData: any[][] = [];
 
     // eslint-disable-next-line array-callback-return
     currencyDatas.map((data: TickPrice) => {
       chartData.push(Object.values(data));
     });
+    if (chartData.length > 100) chartData.shift();
+    chartData.unshift(['Date', 'Price', 'startPrice', 'endPrice', 'maxPrice']);
     return chartData;
   };
 
