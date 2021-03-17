@@ -6,7 +6,7 @@ const production = process.env.NODE_ENV === 'production';
 
 module.exports = {
   mode: production ? 'production' : 'development',
-  devtool: production ? 'hidden-source-map' : 'inline-source-map',
+  devtool: production ? 'hidden-source-map' : 'source-map',
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
