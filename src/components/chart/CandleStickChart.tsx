@@ -1,16 +1,15 @@
 import { Chart } from 'react-google-charts';
 import React from 'react';
 import styled from 'styled-components';
-import { TickPrice } from '../App';
+import { TickData } from '@/types/chart';
 
 const ChartItem = styled.div`
   flex-grow: 1;
-  max-width: 50%;
 `;
 
 interface ChartProps {
   chartTitle: string;
-  currencyDatas: TickPrice[];
+  currencyDatas: TickData[];
 }
 
 function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
@@ -20,7 +19,7 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
     const chartData: any[][] = [];
 
     // eslint-disable-next-line array-callback-return
-    currencyDatas.map((data: TickPrice) => {
+    currencyDatas.map((data: TickData) => {
       chartData.push(Object.values(data));
     });
     if (chartData.length > 100) chartData.shift();

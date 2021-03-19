@@ -28,6 +28,10 @@ module.exports = {
       version: 'detect',
     },
     'import/resolver': {
+      alias: {
+        map: [['@', './src']],
+        extensions: ['.d.ts', '.ts', '.tsx'],
+      },
       node: {
         paths: ['src'],
         extensions: ['.d.ts', '.ts', '.tsx'],
