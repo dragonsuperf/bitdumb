@@ -1,5 +1,5 @@
-import { Chart } from 'react-google-charts';
 import React from 'react';
+import { Chart } from 'react-google-charts';
 import styled from 'styled-components';
 import { TickData } from '@/types/chart';
 
@@ -18,8 +18,7 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
 
     const chartData: any[][] = [];
 
-    // eslint-disable-next-line array-callback-return
-    currencyDatas.map((data: TickData) => {
+    currencyDatas.forEach((data: TickData) => {
       chartData.push(Object.values(data));
     });
     if (chartData.length > 100) chartData.shift();

@@ -4,12 +4,12 @@ import Moment from 'moment';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import styled from 'styled-components';
 import { TickData } from '@/types/chart';
-import CandleStickChart from './chart/CandleStickChart';
+import CandleStickChart from './CandleStickChart';
 
 const ChartContainer = styled.section`
   display: flex;
   flex-direction: column;
-  width: 70%;
+  flex-grow: 1;
 `;
 
 function ChartSection() {
@@ -56,7 +56,9 @@ function ChartSection() {
         };
 
         setCurrentPrice(newTickData.endPrice.toString());
-        setRealtimeTickDatas([...realtimeTickDatas, newTickData]);
+        const newRealTimeTickDatas = [...realtimeTickDatas, newTickData];
+        if (newRealTimeTickDatas.length > 50) newRealTimeTickDatas.shift();
+        setRealtimeTickDatas(newRealTimeTickDatas);
       }
     }
   }, [lastMessage]);
