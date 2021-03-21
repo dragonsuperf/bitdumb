@@ -7,9 +7,9 @@ import SidebarItem from './SidebarItem';
 const SideBarContainer = styled.aside`
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  height: 80vh;
+  max-height: 700px;
   overflow-y: scroll;
-  display: flex;
+  display: block;
   flex-direction: column;
 `;
 

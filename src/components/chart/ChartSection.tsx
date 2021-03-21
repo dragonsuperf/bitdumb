@@ -4,6 +4,8 @@ import Moment from 'moment';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 import styled from 'styled-components';
 import { TickData } from '@/types/chart';
+import { StoreState } from '@/store/store';
+import { useSelector } from 'react-redux';
 import CandleStickChart from './CandleStickChart';
 
 const ChartContainer = styled.section`
@@ -13,11 +15,11 @@ const ChartContainer = styled.section`
 `;
 
 function ChartSection() {
-  const [currency, setCurrency] = useState('BTC');
+  const sidebarState = useSelector((state: StoreState) => state.sidebar);
 
   const SOCKET_URL = 'wss://pubwss.bithumb.com/pub/ws';
-  const SOCKET_API_SUB = `{"type":"ticker", "symbols": ["BTC_KRW"], "tickTypes": ["30M"]}`;
-  const candleStickApi = `/candlestick/${currency}_KRW/1m`;
+  const SOCKET_API_SUB = `{"type":"ticker", "symbols": ["${sidebarState.selectedCoin}_KRW"], "tickTypes": ["30M"]}`;
+  const candleStickApi = `/candlestick/${sidebarState.selectedCoin}_KRW/1m`;
 
   const [prevTickDatas, setPrevTickDatas] = useState<TickData[]>([]);
   const [realtimeTickDatas, setRealtimeTickDatas] = useState<TickData[]>([]);
@@ -27,7 +29,9 @@ function ChartSection() {
 
   useEffect(() => {
     getPrevTickDatas();
-  }, []);
+    setRealtimeTickDatas([]);
+    sendMessage(SOCKET_API_SUB);
+  }, [candleStickApi]);
 
   useEffect(() => {
     if (lastMessage !== null) {
@@ -55,7 +59,9 @@ function ChartSection() {
           maxPrice: Number(Math.max(prevTickData.endPrice, data.closePrice)),
         };
 
-        setCurrentPrice(newTickData.endPrice.toString());
+        const priceNow = newTickData.endPrice.toString();
+        setCurrentPrice(priceNow);
+        document.title = `Bitdumb ${priceNow} ${sidebarState.selectedCoin}/KRW`;
         const newRealTimeTickDatas = [...realtimeTickDatas, newTickData];
         if (newRealTimeTickDatas.length > 50) newRealTimeTickDatas.shift();
         setRealtimeTickDatas(newRealTimeTickDatas);
@@ -92,7 +98,7 @@ function ChartSection() {
         const currentData = response.data.data;
         const currentDataLength = response.data.data.length;
         const newTickPriceList: TickData[] = convertDataToTickPrice(
-          currentData.slice(currentDataLength - 100, currentDataLength - 1),
+          currentData.slice(currentDataLength - 50, currentDataLength - 1),
         );
         setPrevTickDatas(newTickPriceList);
         setTimeout(getPrevTickDatas, 60000);

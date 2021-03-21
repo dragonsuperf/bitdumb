@@ -5,12 +5,17 @@ const size = {
 };
 
 const theme = {
-  mainColor: '#0a4297',
+  themeColor: '#3AAFA9',
+  textColor: '#0a4297',
   fallingColor: '#4386f9',
   risingColor: '#f75467',
+  baseBackgroundColor: '#f8f8f8',
   moblide: `(max-width: ${size.moblie})`,
   tablet: `(max-width: ${size.tablet})`,
   desktop: `(max-width: ${size.desktop})`,
 };
+
+export const textColor = '#0a4297';
+export const themeColor = '#3AAFA9';
 
 export default theme;
