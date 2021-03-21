@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Coin } from '@/types/coin';
-import { fallingColor, risingColor } from '@/styles/colors';
 
 const SidebarLi = styled.li`
   display: flex;
@@ -11,8 +10,9 @@ const SidebarLi = styled.li`
   padding-right: 12px;
   text-align: center;
   align-items: center;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 400;
+  color: ${(props) => props.theme.mainColor};
   & > div {
     width: 80px;
   }
@@ -27,7 +27,7 @@ const FluctateDiv = styled.div`
 `;
 
 const PriceText = styled.span<{ isRising: boolean; isRisingNow?: boolean }>`
-  color: ${(props) => (props.isRising ? risingColor : fallingColor)};
+  color: ${(props) => (props.isRising ? props.theme.risingColor : props.theme.fallingColor)};
 `;
 
 interface SidebarItemProps {

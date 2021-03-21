@@ -67,7 +67,7 @@ function SideBar() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <SideBarContainer>

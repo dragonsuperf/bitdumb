@@ -44,7 +44,9 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
           },
           hAxis: {
             title: chartTitle,
-            ticks: [22058, 22080, 22100, 22120],
+            titleTextStyle: {
+              color: '#FF0000',
+            },
           },
         }}
         rootProps={{ 'data-testid': '2' }}

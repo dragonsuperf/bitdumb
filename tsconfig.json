@@ -23,5 +23,6 @@
     "noEmit": false,
     "jsx": "react-jsx"
   },
-  "includes": ["src"]
+  "includes": ["src"],
+  "exclude": ["node_modules", "models", "js"],
 }
