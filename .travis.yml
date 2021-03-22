@@ -1,0 +1,44 @@
+branches:
+  only:
+    - main
+
+language: node_js
+node_js:
+  - 15.3.0
+cache:
+  directories:
+    - node_modules
+
+script:
+  - yarn test
+  
+before_deploy: # 배포전 작업
+  - rm -rf node_modules
+  - zip -r frontend * .[^.]*
+  - mkdir -p deploy
+  - mv frontend.zip deploy/frontend.zip
+deploy:
+  - provider: s3
+    bucket: blog.dragonsuperf.com
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    region: ap-northeast-2 # us-east-1 region이 아니라면 명시해주어야함
+    skip_cleanup: true
+    local_dir: deploy
+    wait-until-deployed: true
+    on:
+      repo: dragonsuperf/kakao-cloud-portfolio
+      branch: main
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    bucket: blog.dragonsuperf.com
+    key: frontend.zip
+    bundle_type: zip
+    application: bitdumb
+    deployment_group: bitdumb-frontend-deploy-group
+    region: ap-northeast-2 # us-east-1 region이 아니라면 명시해주어야함
+    wait-until-deployed: true
+    on:
+      repo: dragonsuperf/kakao-cloud-portfolio
+      branch: main
