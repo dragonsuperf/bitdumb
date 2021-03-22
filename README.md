@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/dragonsuperf/kakao-cloud-portfolio.svg?branch=main)](https://travis-ci.com/dragonsuperf/kakao-cloud-portfolio)
 # kakao_cloud_portfolio
 
 Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프론트엔드 개발자 모집에 지원하며 포트폴리오로 제출할 내용을 저장하는 레포지토리 입니다.
