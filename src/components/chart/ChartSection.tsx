@@ -29,8 +29,8 @@ function ChartSection() {
 
   useEffect(() => {
     getPrevTickDatas();
-    setRealtimeTickDatas([]);
     sendMessage(SOCKET_API_SUB);
+    setRealtimeTickDatas([]);
   }, [candleStickApi]);
 
   useEffect(() => {

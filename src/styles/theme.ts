@@ -10,6 +10,7 @@ const theme = {
   fallingColor: '#4386f9',
   risingColor: '#f75467',
   baseBackgroundColor: '#f8f8f8',
+  weakBorder: '#eee',
   moblide: `(max-width: ${size.moblie})`,
   tablet: `(max-width: ${size.tablet})`,
   desktop: `(max-width: ${size.desktop})`,
