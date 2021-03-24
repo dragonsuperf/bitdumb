@@ -7,10 +7,11 @@ import SidebarItem from './SidebarItem';
 const SideBarContainer = styled.aside`
   border-left: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  max-height: 700px;
+  max-height: 800px;
   overflow-y: scroll;
   display: block;
   flex-direction: column;
+  flex-shrink: 1;
 `;
 
 function SideBar() {

@@ -5,6 +5,10 @@ import { TickData } from '@/types/chart';
 
 const ChartItem = styled.div`
   flex-grow: 1;
+  border: 1px solid ${(props) => props.theme.weakBorder};
+  margin-bottom: 12px;
+  margin-right: 5px;
+  border-radius: 5px;
 `;
 
 interface ChartProps {
