@@ -6,10 +6,17 @@ import ChartLoading from './ChartLoading';
 
 const ChartItem = styled.div`
   flex-grow: 1;
+<<<<<<< HEAD
   border-left: 1px solid ${(props) => props.theme.themeColor};
   margin: 5px;
   margin-bottom: 18px;
   min-height: 350px;
+=======
+  border: 1px solid ${(props) => props.theme.weakBorder};
+  margin-bottom: 12px;
+  margin-right: 5px;
+  border-radius: 5px;
+>>>>>>> 222fe3d4527802c69ad54e7de733d0ae5f6e4e44
 `;
 
 interface ChartProps {

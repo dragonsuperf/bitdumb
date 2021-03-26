@@ -11,6 +11,7 @@ const theme = {
   risingColor: '#f75467',
   baseBackgroundColor: '#f8f8f8',
   weakBorder: '#eee',
+  basicColor: '#1b1b1b',
   moblide: `(max-width: ${size.moblie})`,
   tablet: `(max-width: ${size.tablet})`,
   desktop: `(max-width: ${size.desktop})`,

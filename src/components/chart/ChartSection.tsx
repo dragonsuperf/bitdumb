@@ -8,6 +8,11 @@ import { StoreState } from '@/store/store';
 import { useSelector } from 'react-redux';
 import CandleStickChart from './CandleStickChart';
 
+const CurrentCoinHeader = styled.div`
+  padding: 5px;
+  font-size: 25px;
+`;
+
 const ChartContainer = styled.section`
   display: flex;
   flex-direction: column;
@@ -108,6 +113,7 @@ function ChartSection() {
 
   return (
     <ChartContainer>
+      <CurrentCoinHeader>{sidebarState.selectedCoin}</CurrentCoinHeader>
       <CandleStickChart currencyDatas={prevTickDatas} chartTitle="이전 기록" />
       <CandleStickChart currencyDatas={realtimeTickDatas} chartTitle={`현재가: ${currentPrice} KRW`} />
     </ChartContainer>
