@@ -2,9 +2,14 @@ import React from 'react';
 import { Chart } from 'react-google-charts';
 import styled from 'styled-components';
 import { TickData } from '@/types/chart';
+import ChartLoading from './ChartLoading';
 
 const ChartItem = styled.div`
   flex-grow: 1;
+  border-left: 1px solid ${(props) => props.theme.themeColor};
+  margin: 5px;
+  margin-bottom: 18px;
+  min-height: 350px;
 `;
 
 interface ChartProps {
@@ -26,7 +31,13 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
     return chartData;
   };
 
-  if (currencyDatas.length === 0) return null;
+  if (currencyDatas.length === 0) {
+    return (
+      <ChartItem>
+        <ChartLoading />
+      </ChartItem>
+    );
+  }
 
   return (
     <ChartItem>
@@ -45,7 +56,7 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
           hAxis: {
             title: chartTitle,
             titleTextStyle: {
-              color: '#FF0000',
+              color: '#0a4297',
             },
           },
         }}

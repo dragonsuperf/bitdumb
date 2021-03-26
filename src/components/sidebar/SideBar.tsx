@@ -5,16 +5,29 @@ import { Coin } from '@/types/coin';
 import SidebarItem from './SidebarItem';
 
 const SideBarContainer = styled.aside`
-  border-left: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  max-height: 700px;
-  overflow-y: scroll;
+  border-left: 1px solid ${(props) => props.theme.weakBorder};
+  border-bottom: 1px solid ${(props) => props.theme.weakBorder};
   display: block;
   flex-direction: column;
+  & > ol {
+    max-height: 700px;
+    overflow-y: scroll;
+  }
+`;
+
+const SearchBar = styled.input`
+  margin: 5px;
+  padding: 5px;
+  width: calc(100% - 10px);
+  box-sizing: border-box;
+  height: 25px;
+  border: 1px solid ${(props) => props.theme.weakBorder};
+  border-radius: 3px;
 `;
 
 function SideBar() {
   const [coinList, setCoinList] = useState<Coin[]>([]);
+  const [searchSymbol, setSearchSymbol] = useState('');
 
   const TICKER_API = `/ticker/ALL_KRW`;
 
@@ -71,9 +84,12 @@ function SideBar() {
 
   return (
     <SideBarContainer>
+      <SearchBar placeholder="코인 심볼 검색" value={searchSymbol} onChange={(e) => setSearchSymbol(e.target.value)} />
       <ol>
         {coinList.map((coin) => {
-          return <SidebarItem key={coin.id} coinData={coin} />;
+          if (searchSymbol === '') return <SidebarItem key={coin.id} coinData={coin} />;
+          if (coin.id.includes(searchSymbol)) return <SidebarItem key={coin.id} coinData={coin} />;
+          return null;
         })}
       </ol>
     </SideBarContainer>

@@ -14,7 +14,7 @@ const SidebarLi = styled.li<{ isSelected: boolean }>`
   align-items: center;
   font-size: 12px;
   font-weight: 400;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid ${(props) => props.theme.weakBorder};
   color: ${(props) => props.theme.textColor};
   background-color: ${(props) => (props.isSelected ? props.theme.baseBackgroundColor : 'white')};
   position: ${(props) => (props.isSelected ? 'relative' : 'inherit')};
