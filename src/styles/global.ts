@@ -1,6 +1,24 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'NanumSquare';
+    font-weight: 400;
+    src: url('../../statics/fonts/NanumSquareRoundL.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'NanumSquareBold';
+    font-weight: 700;
+    src: url('../../statics/fonts/NanumSquareRoundB.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'NanumSquareExtraBold';
+    font-weight: 800;
+    src: url('../../statics/fonts/NanumSquareRoundEB.ttf') format('truetype');
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -10,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     box-sizing: border-box;
+    font-family: 'NanumSquare', sans-serif;
   }
 `;
 

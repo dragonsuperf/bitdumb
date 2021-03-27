@@ -10,7 +10,7 @@ const SideBarContainer = styled.aside`
   display: block;
   flex-direction: column;
   & > ol {
-    max-height: 700px;
+    max-height: calc(92vh - 50px);
     overflow-y: scroll;
   }
 `;
