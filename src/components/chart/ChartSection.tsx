@@ -33,6 +33,10 @@ function ChartSection() {
   const { sendMessage, lastMessage, readyState } = useWebSocket(SOCKET_URL);
 
   useEffect(() => {
+    setInterval(getPrevTickDatas, 60000);
+  }, []);
+
+  useEffect(() => {
     getPrevTickDatas();
     sendMessage(SOCKET_API_SUB);
     setRealtimeTickDatas([]);
@@ -106,7 +110,6 @@ function ChartSection() {
           currentData.slice(currentDataLength - 50, currentDataLength - 1),
         );
         setPrevTickDatas(newTickPriceList);
-        setTimeout(getPrevTickDatas, 60000);
       })
       .catch((error) => console.log(error));
   };
