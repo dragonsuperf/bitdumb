@@ -11,6 +11,7 @@ import CandleStickChart from './CandleStickChart';
 const CurrentCoinHeader = styled.div`
   padding: 5px;
   font-size: 25px;
+  text-align: center;
 `;
 
 const ChartContainer = styled.section`
@@ -33,14 +34,14 @@ function ChartSection() {
   const { sendMessage, lastMessage, readyState } = useWebSocket(SOCKET_URL);
 
   useEffect(() => {
-    setInterval(getPrevTickDatas, 60000);
-  }, []);
-
-  useEffect(() => {
     getPrevTickDatas();
     sendMessage(SOCKET_API_SUB);
     setRealtimeTickDatas([]);
-  }, [candleStickApi]);
+    const intervalId = setInterval(getPrevTickDatas, 60000);
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [sidebarState.selectedCoin]);
 
   useEffect(() => {
     if (lastMessage !== null) {

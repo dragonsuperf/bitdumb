@@ -4,19 +4,19 @@ const GlobalStyle = createGlobalStyle`
   @font-face {
     font-family: 'NanumSquare';
     font-weight: 400;
-    src: url('../../statics/fonts/NanumSquareRoundL.ttf') format('truetype');
+    src: url('statics/fonts/NanumSquareRoundL.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'NanumSquareBold';
     font-weight: 700;
-    src: url('../../statics/fonts/NanumSquareRoundB.ttf') format('truetype');
+    src: url('statics/fonts/NanumSquareRoundB.ttf') format('truetype');
   }
   
   @font-face {
     font-family: 'NanumSquareExtraBold';
     font-weight: 800;
-    src: url('../../statics/fonts/NanumSquareRoundEB.ttf') format('truetype');
+    src: url('statics/fonts/NanumSquareRoundEB.ttf') format('truetype');
   }
 
   * {

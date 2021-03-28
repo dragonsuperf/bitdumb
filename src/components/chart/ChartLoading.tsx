@@ -43,7 +43,7 @@ function ChartLoading() {
     const newLines = [];
 
     for (let i = 0; i < lines; i += 1) {
-      newLines.push(<Inner delay={i / 4} />);
+      newLines.push(<Inner key={i} delay={i / 4} />);
     }
 
     return newLines;
