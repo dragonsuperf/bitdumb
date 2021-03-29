@@ -8,17 +8,17 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 - 요구하는 기술 스택을 최대한 만족할 수 있도록
 
 ## 요구하는 기술 및 경험
-- [ ] HTML5, CSS3 기본 지식 및 마크업 능력
-- [ ] JavaScript 사용에 능숙하며 ES6+ 표준 스펙을 활용한 개발 경험
-- [ ] React 또는 Vue.js 를 활용한 SPA 개발 경험 (2년 이상)
-- [ ] REST API 를 활용한 Web 개발 경험
-- [ ] Visualization Library 활용 경험 (Chart.js, D3.js, etc...)
+- [x] HTML5, CSS3 기본 지식 및 마크업 능력
+- [x] JavaScript 사용에 능숙하며 ES6+ 표준 스펙을 활용한 개발 경험
+- [x] React 또는 Vue.js 를 활용한 SPA 개발 경험 (2년 이상)
+- [x] REST API 를 활용한 Web 개발 경험
+- [x] Visualization Library 활용 경험 (Chart.js, D3.js, etc...)
 - [x] webpack, Babel 등을 이용한 프로젝트 환경 구성 경험
   - Webpack, Babel으로 포트폴리오 세팅
 - [ ] UI 테스트 구축 및 개발 경험
-- [ ] TypeScript 개발 경험
-- [ ] Git, Zeplin, Jenkins, Docker 등 개발 및 협업에 필요한 도구의 사용에 능숙하신 분
-- [ ] 클라우드 서비스 이용 경험 (AWS, GCP, Azure, etc)
+- [x] TypeScript 개발 경험
+- [x] Git, Zeplin, Jenkins, Docker 등 개발 및 협업에 필요한 도구의 사용에 능숙하신 분
+- [x] 클라우드 서비스 이용 경험 (AWS, GCP, Azure, etc)
 
 ## 2021-03-11
 - Visualization Library를 활용하기 좋은 Open API를 선정하기 위한 후보
@@ -165,7 +165,16 @@ axios를 사용한 이유는? (굉장히 단순한 이유)
 
 ### CI / CD 관련 스크립트 작성
 - Travis, AWS CodeDeploy로 CI CD 구성
+- Auto Scaling Group을 사용하여 Blue/Green Deploy로 무중단 배포
+- 이렇게 구성한 이유는 일단 현 회사에서 구축한 CI/CD 시스템이 동일한 기술 스택을 사용하고 있었고, 3달 가까이 문제없이 사용하고 있기 때문
+- Cloudfront와 같은 서비스를 사용하지 않은 것은 간단하지만 docker를 사용함으로서 해당 기술에 대한 이해가 어느정도는 있다는 것을 어필하기 위함
 
-## 2021-03-23
+## 2021-03-23 ~ 28 마무리작업
 
-### Header에 문구 추가
+### 자잘한 버그 수정
+- setInterval을 useEffect에서 사용할 경우 생길 수 있는 문제 때문에 http api를 사용하는 로직에 문제가 있었는데, setInterval을 return(unmount) 할때 clearInterval로 청소하여 해결
+
+### 배포가 제대로 동작하도록 수정
+- Travis CI, AWS CodeDeploy로 이어지는 서비스에 대한 세팅은 한번 했었기 때문에 삽질은 조금 했어도 금방 세팅할 수 있었다
+- 다만 회사에서는 이미 node 환경이 갖추어진 이미지를 가지고 인스턴스를 만들어 세팅했었는데, 아무것도 세팅되어있지 않은 AMI에 node를 세팅하니 배포 시 동작하는 shell script 내에서 yarn이 동작하지 않았다
+- 멋진 해결방법은 아니지만 shell script 내에 환경변수를 추가하는 스크립트를 넣고 일단은 배포를 제대로 동작하게 해두었다
