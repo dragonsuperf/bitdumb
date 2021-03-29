@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import GlobalStyle from '@/styles/global';
 import styled, { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { theme, darkTheme } from '@/styles/theme';
@@ -35,6 +36,7 @@ function App() {
             <SideBar />
           </MainContainer>
         </Wrapper>
+        <GlobalStyle theme={isDarkMode ? darkTheme : theme} />
       </Provider>
     </ThemeProvider>
   );
