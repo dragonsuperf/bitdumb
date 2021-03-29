@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd /home/ec2-user/deploy/frontend/
-~/.nvm/nvm.sh
+PATH=$PATH:/home/ec2-user/.yarn/bin:/home/ec2-user/.nvm/versions/node/v15.12.0/bin
 yarn install
 yarn build
 sudo docker-compose up -d --build 
