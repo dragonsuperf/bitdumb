@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
+import { theme, darkTheme } from '@/styles/theme';
 import store from '@/store/store';
 import ChartSection from './components/chart/ChartSection';
 import Header from './components/header/Header';
@@ -22,16 +23,20 @@ const MainContainer = styled.div`
 const appStore = store();
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <Provider store={appStore}>
-      <Header />
-      <Wrapper>
-        <MainContainer>
-          <ChartSection />
-          <SideBar />
-        </MainContainer>
-      </Wrapper>
-    </Provider>
+    <ThemeProvider theme={isDarkMode ? darkTheme : theme}>
+      <Provider store={appStore}>
+        <Header />
+        <Wrapper>
+          <MainContainer>
+            <ChartSection />
+            <SideBar />
+          </MainContainer>
+        </Wrapper>
+      </Provider>
+    </ThemeProvider>
   );
 }
 

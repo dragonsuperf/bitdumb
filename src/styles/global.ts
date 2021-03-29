@@ -29,6 +29,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     font-family: 'NanumSquare', sans-serif;
+    color: ${(props) => props.theme.textColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
 
