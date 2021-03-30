@@ -8,7 +8,8 @@ const size = {
 
 export const theme: DefaultTheme = {
   themeColor: '#3AAFA9',
-  textColor: '#0a4297',
+  coloredTextColor: '#0a4297',
+  textColor: '#232b2b',
   fallingColor: '#4386f9',
   risingColor: '#f75467',
   baseBackgroundColor: '#f8f8f8',
@@ -22,11 +23,12 @@ export const theme: DefaultTheme = {
 
 export const darkTheme: DefaultTheme = {
   themeColor: '#3AAFA9',
-  textColor: '#fafcfc',
+  textColor: 'white',
+  coloredTextColor: '#fafcfc',
   fallingColor: '#4386f9',
   risingColor: '#f75467',
-  baseBackgroundColor: '#f8f8f8',
-  weakBorder: '#eee',
+  baseBackgroundColor: '#32363e',
+  weakBorder: '#aaaa',
   basicColor: '#1b1b1b',
   backgroundColor: '#282c34',
   moblide: `(max-width: ${size.moblie})`,

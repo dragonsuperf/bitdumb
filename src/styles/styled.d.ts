@@ -3,6 +3,7 @@ import 'styled-components';
 declare module 'styled-components' {
   export interface DefaultTheme {
     themeColor: string;
+    coloredTextColor: string;
     textColor: string;
     fallingColor: string;
     risingColor: string;

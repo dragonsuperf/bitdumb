@@ -8,6 +8,7 @@ import store from '@/store/store';
 import ChartSection from './components/chart/ChartSection';
 import Header from './components/header/Header';
 import SideBar from './components/sidebar/SideBar';
+import DarkModeButton from './components/button/DarkModeButton';
 
 axios.defaults.baseURL = 'https://api.bithumb.com/public';
 
@@ -35,6 +36,7 @@ function App() {
             <ChartSection />
             <SideBar />
           </MainContainer>
+          <DarkModeButton onClick={() => setIsDarkMode(!isDarkMode)}>{isDarkMode ? '🌝' : '🌚'}</DarkModeButton>
         </Wrapper>
         <GlobalStyle theme={isDarkMode ? darkTheme : theme} />
       </Provider>

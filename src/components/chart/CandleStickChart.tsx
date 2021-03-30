@@ -1,6 +1,6 @@
 import React from 'react';
 import { Chart } from 'react-google-charts';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { TickData } from '@/types/chart';
 import ChartLoading from './ChartLoading';
 
@@ -18,6 +18,7 @@ interface ChartProps {
 }
 
 function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
+  const theme = useTheme();
   const tickPriceToChartData = () => {
     if (currencyDatas === undefined) return false;
 
@@ -50,15 +51,25 @@ function CandleStickChart({ chartTitle, currencyDatas }: ChartProps) {
           legend: 'none',
           bar: { groupWidth: '50%' }, // Remove space between bars.
           candlestick: {
-            fallingColor: { strokeWidth: 0, fill: '#0051c7' },
-            risingColor: { strokeWidth: 0, fill: '#a52714' },
+            fallingColor: { strokeWidth: 0, fill: theme.fallingColor },
+            risingColor: { strokeWidth: 0, fill: theme.risingColor },
           },
           hAxis: {
             title: chartTitle,
             titleTextStyle: {
-              color: '#0a4297',
+              color: theme.coloredTextColor,
+            },
+            textStyle: {
+              color: theme.textColor,
             },
           },
+          vAxis: {
+            textStyle: {
+              color: theme.textColor,
+            },
+          },
+          backgroundColor: theme.backgroundColor,
+          colors: [theme.coloredTextColor],
         }}
         rootProps={{ 'data-testid': '2' }}
       />
