@@ -23,6 +23,8 @@ const SearchBar = styled.input`
   height: 25px;
   border: 1px solid ${(props) => props.theme.weakBorder};
   border-radius: 3px;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.textColor};
 `;
 
 function SideBar() {

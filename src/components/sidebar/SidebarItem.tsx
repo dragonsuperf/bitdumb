@@ -16,7 +16,7 @@ const SidebarLi = styled.li<{ isSelected: boolean }>`
   font-weight: 400;
   border-bottom: 1px solid ${(props) => props.theme.weakBorder};
   color: ${(props) => props.theme.textColor};
-  background-color: ${(props) => (props.isSelected ? props.theme.baseBackgroundColor : 'white')};
+  background-color: ${(props) => (props.isSelected ? props.theme.baseBackgroundColor : props.theme.backgroundColor)};
   position: ${(props) => (props.isSelected ? 'relative' : 'inherit')};
   cursor: pointer;
   &::before {
@@ -29,7 +29,7 @@ const SidebarLi = styled.li<{ isSelected: boolean }>`
     height: 100%;
   }
   &:hover {
-    background-color: #f8f8f8;
+    background-color: ${(props) => props.theme.baseBackgroundColor};
   }
   & > div {
     width: 80px;

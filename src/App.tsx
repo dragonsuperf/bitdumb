@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
+import GlobalStyle from '@/styles/global';
+import styled, { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
+import { theme, darkTheme } from '@/styles/theme';
 import store from '@/store/store';
 import ChartSection from './components/chart/ChartSection';
 import Header from './components/header/Header';
 import SideBar from './components/sidebar/SideBar';
+import DarkModeButton from './components/button/DarkModeButton';
 
 axios.defaults.baseURL = 'https://api.bithumb.com/public';
 
@@ -22,16 +25,22 @@ const MainContainer = styled.div`
 const appStore = store();
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <Provider store={appStore}>
-      <Header />
-      <Wrapper>
-        <MainContainer>
-          <ChartSection />
-          <SideBar />
-        </MainContainer>
-      </Wrapper>
-    </Provider>
+    <ThemeProvider theme={isDarkMode ? darkTheme : theme}>
+      <Provider store={appStore}>
+        <Header />
+        <Wrapper>
+          <MainContainer>
+            <ChartSection />
+            <SideBar />
+          </MainContainer>
+          <DarkModeButton onClick={() => setIsDarkMode(!isDarkMode)}>{isDarkMode ? '🌝' : '🌚'}</DarkModeButton>
+        </Wrapper>
+        <GlobalStyle theme={isDarkMode ? darkTheme : theme} />
+      </Provider>
+    </ThemeProvider>
   );
 }
 
