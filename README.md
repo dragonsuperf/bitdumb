@@ -6,24 +6,30 @@ Kakao Career Boost Program for Cloud - 카카오 클라우드 콘솔(포탈) 프
 # Bitdumb
 `#Typescript` `#React` `#Redux` `#AWS-Codedeploy` `#TravisCI` 
 
-## Demo
+### Demo
 https://bitdumb.dragonsuperf.com
 
-## Desc
+### Desc
 React를 시작한지 얼마되지 않았고, React로 진행한 토이프로젝트가 없기에 포트폴리오로 제출하기 위해 작성된 Bithumb Open API를 활용한 암호화폐 차트 뷰어 입니다.
 
-## Goal
+### Goal
 - 알고있는 기술 스택을 최대한 활용하여 그 것을 드러낼 수 있도록
 
-## Change Log
+### Change Log
+Bitdumb의 개발을 시작한 이유와, 개발과정을 담고있습니다.
 https://github.com/dragonsuperf/kakao-cloud-portfolio/blob/main/CHANGE-LOG.md
+
+
 
 # Tombo
 `#Javascript` `#React` `#Electron`
+
+### repository
 https://github.com/dragonsuperf/Tombo
 
-## Desc
-atom editor의 active power mode가 그리웠지만, vscode에서는 콤보를 시각적으로 보여주지 않았기 때문에 만들게 된 윈도우 APP입니다.
-코딩, 문서 작업의 재미를 더해주는 electron으로 개발한 window app이라고도 설명 할 수 있습니다.
+### Desc
+atom editor의 active power mode가 그리웠지만, vscode에서는 콤보를 시각적으로 보여주지 않았기 때문에 만들게 된 electron으로 개발한 윈도우 APP입니다.  
+코딩, 문서 작업에 재미를 더할 수 있도록 타이핑을 하면 콤보 카운터가 올라가는 간단한 기능만을 가지고 있습니다.
 
-## Screenshot
+### Screenshot
+![tombo3](https://user-images.githubusercontent.com/23359043/113097266-8eb1c580-9231-11eb-95cb-63925333281b.gif)
