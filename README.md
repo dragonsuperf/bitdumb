@@ -29,7 +29,9 @@ https://github.com/dragonsuperf/Tombo
 
 ### Desc
 atom editor의 active power mode가 그리웠지만, vscode에서는 콤보를 시각적으로 보여주지 않았기 때문에 만들게 된 electron으로 개발한 윈도우 APP입니다.  
-코딩, 문서 작업에 재미를 더할 수 있도록 타이핑을 하면 콤보 카운터가 올라가는 간단한 기능만을 가지고 있습니다.
+
+### Goal
+코딩, 문서 작업의 재미를 향상시킨다.
 
 ### Screenshot
 ![tombo3](https://user-images.githubusercontent.com/23359043/113097266-8eb1c580-9231-11eb-95cb-63925333281b.gif)
