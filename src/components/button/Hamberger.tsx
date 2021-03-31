@@ -1,10 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const HambergerContainer = styled.div`
+  display: none;
+  @media only screen and (${(props) => props.theme.tablet}) {
+    display: block;
+  }
+`;
+
 const Bar = styled.div`
-  width: 35pc;
-  height: 5px;
-  background-color: #333333;
+  width: 30px;
+  height: 2px;
+  background-color: ${(props) => props.theme.textColor};
   margin: 6px 0;
   transition: 0.4s;
 `;
@@ -15,11 +22,11 @@ interface HambergerProps {
 
 function Hamberger({ handleClick }: HambergerProps) {
   return (
-    <div tabIndex={0} role="button" onKeyPress={handleClick} onClick={() => handleClick()}>
+    <HambergerContainer tabIndex={0} role="button" onKeyPress={handleClick} onClick={() => handleClick()}>
       <Bar />
       <Bar />
       <Bar />
-    </div>
+    </HambergerContainer>
   );
 }
 

@@ -16,9 +16,9 @@ export const theme: DefaultTheme = {
   weakBorder: '#eee',
   basicColor: '#1b1b1b',
   backgroundColor: 'white',
-  moblide: `(max-width: ${size.moblie})`,
-  tablet: `(max-width: ${size.tablet})`,
-  desktop: `(max-width: ${size.desktop})`,
+  mobile: `max-width: ${size.moblie}`,
+  tablet: `max-width: ${size.tablet}`,
+  desktop: `max-width: ${size.desktop}`,
 };
 
 export const darkTheme: DefaultTheme = {
@@ -31,9 +31,9 @@ export const darkTheme: DefaultTheme = {
   weakBorder: '#aaaa',
   basicColor: '#1b1b1b',
   backgroundColor: '#282c34',
-  moblide: `(max-width: ${size.moblie})`,
-  tablet: `(max-width: ${size.tablet})`,
-  desktop: `(max-width: ${size.desktop})`,
+  mobile: `max-width: ${size.moblie}`,
+  tablet: `max-width: ${size.tablet}`,
+  desktop: `max-width: ${size.desktop}`,
 };
 
 export const textColor = '#0a4297';
