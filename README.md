@@ -31,7 +31,7 @@ https://github.com/dragonsuperf/Tombo
 atom editor의 active power mode가 그리웠지만, vscode에서는 콤보를 시각적으로 보여주지 않았기 때문에 만들게 된 electron으로 개발한 윈도우 APP입니다.  
 
 ### Goal
-코딩, 문서 작업의 재미를 향상시킨다.
+- 코딩, 문서 작업의 재미를 향상시킨다.
 
 ### Screenshot
 ![tombo3](https://user-images.githubusercontent.com/23359043/113097266-8eb1c580-9231-11eb-95cb-63925333281b.gif)
