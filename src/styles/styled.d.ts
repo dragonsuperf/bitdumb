@@ -11,7 +11,7 @@ declare module 'styled-components' {
     weakBorder: string;
     basicColor: string;
     backgroundColor: string;
-    moblide: string;
+    mobile: string;
     tablet: string;
     desktop: string;
   }

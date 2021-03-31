@@ -1,5 +1,8 @@
+import { sideBarActions } from '@/services/sidebar/slice';
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import Hamberger from '../button/Hamberger';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -10,15 +13,13 @@ const HeaderWrapper = styled.div`
 
 const HeaderContainer = styled.div`
   width: 1200px;
+  padding: 8px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const HeaderTitle = styled.div`
-  padding-left: 25px;
-  padding-top: 8px;
-  padding-bottom: 8px;
   & > h3:first-child {
     color: ${(props) => props.theme.themeColor};
   }
@@ -29,6 +30,12 @@ const HeaderTitle = styled.div`
 `;
 
 function Header() {
+  const dispatch = useDispatch();
+
+  const toggleSidebarVisibility = () => {
+    dispatch(sideBarActions.toggleVisibility());
+  };
+
   return (
     <HeaderWrapper>
       <HeaderContainer>
@@ -36,6 +43,7 @@ function Header() {
           <h3>Bit</h3>
           <h3>dumb</h3>
         </HeaderTitle>
+        <Hamberger handleClick={toggleSidebarVisibility} />
       </HeaderContainer>
     </HeaderWrapper>
   );

@@ -2,16 +2,25 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Coin } from '@/types/coin';
+import { StoreState } from '@/store/store';
+import { useSelector } from 'react-redux';
 import SidebarItem from './SidebarItem';
 
-const SideBarContainer = styled.aside`
+const SideBarContainer = styled.aside<{ visible: boolean }>`
   border-left: 1px solid ${(props) => props.theme.weakBorder};
   border-bottom: 1px solid ${(props) => props.theme.weakBorder};
-  display: block;
   flex-direction: column;
   & > ol {
     max-height: calc(92vh - 50px);
     overflow-y: scroll;
+  }
+  @media only screen and (${(props) => props.theme.tablet}) {
+    visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
+    position: fixed;
+    right: 0px;
+    max-height: 100vh;
+    transition: all 0.3s;
+    width: ${(props) => (props.visible ? '40%' : '0%')};
   }
 `;
 
@@ -28,6 +37,7 @@ const SearchBar = styled.input`
 `;
 
 function SideBar() {
+  const sidebarState = useSelector((state: StoreState) => state.sidebar);
   const [coinList, setCoinList] = useState<Coin[]>([]);
   const [searchSymbol, setSearchSymbol] = useState('');
 
@@ -85,7 +95,7 @@ function SideBar() {
   };
 
   return (
-    <SideBarContainer>
+    <SideBarContainer visible={sidebarState.visible}>
       <SearchBar placeholder="코인 심볼 검색" value={searchSymbol} onChange={(e) => setSearchSymbol(e.target.value)} />
       <ol>
         {coinList.map((coin) => {
