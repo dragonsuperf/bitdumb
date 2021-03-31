@@ -16,7 +16,7 @@ React를 시작한지 얼마되지 않았고, React로 진행한 토이프로젝
 - 알고있는 기술 스택을 최대한 활용하여 그 것을 드러낼 수 있도록
 
 ### Change Log
-Bitdumb의 개발을 시작한 이유와, 개발과정을 담고있습니다.
+Bitdumb의 개발을 시작한 이유와, 개발과정을 담고있습니다.  
 https://github.com/dragonsuperf/kakao-cloud-portfolio/blob/main/CHANGE-LOG.md
 
 
