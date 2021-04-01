@@ -20,7 +20,8 @@ const SideBarContainer = styled.aside<{ visible: boolean }>`
     right: 0px;
     max-height: 100vh;
     transition: all 0.3s;
-    width: ${(props) => (props.visible ? '40%' : '0%')};
+    min-width: 280px;
+    width: ${(props) => (props.visible ? '60%' : '0%')};
   }
 `;
 
