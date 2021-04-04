@@ -8,13 +8,13 @@ const GlobalStyle = createGlobalStyle`
   }
   
   @font-face {
-    font-family: 'NanumSquareBold';
+    font-family: 'NanumSquare';
     font-weight: 700;
     src: url('/fonts/NanumSquareRoundB.ttf') format('truetype');
   }
   
   @font-face {
-    font-family: 'NanumSquareExtraBold';
+    font-family: 'NanumSquare';
     font-weight: 800;
     src: url('/fonts/NanumSquareRoundEB.ttf') format('truetype');
   }

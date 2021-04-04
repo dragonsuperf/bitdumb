@@ -44,6 +44,20 @@ function ChartSection() {
   }, [sidebarState.selectedCoin]);
 
   useEffect(() => {
+    getTickDataFromMessage();
+  }, [lastMessage]);
+
+  useEffect(() => {
+    switch (readyState) {
+      case ReadyState.OPEN:
+        sendMessage(SOCKET_API_SUB);
+        break;
+      default:
+        break;
+    }
+  }, [readyState]);
+
+  const getTickDataFromMessage = () => {
     if (lastMessage !== null) {
       const data = JSON.parse(lastMessage.data).content;
       if (data !== null && data !== undefined) {
@@ -77,17 +91,7 @@ function ChartSection() {
         setRealtimeTickDatas(newRealTimeTickDatas);
       }
     }
-  }, [lastMessage]);
-
-  useEffect(() => {
-    switch (readyState) {
-      case ReadyState.OPEN:
-        sendMessage(SOCKET_API_SUB);
-        break;
-      default:
-        break;
-    }
-  }, [readyState]);
+  };
 
   const convertDataToTickPrice = (datas: any): TickData[] => {
     return datas.map((data: any) => {
