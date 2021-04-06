@@ -26,6 +26,8 @@
     "@babel/preset-typescript": "^7.13.0",
     "@jest/types": "^26.6.2",
     "@reduxjs/toolkit": "^1.5.0",
+    "@sentry/react": "^6.2.5",
+    "@sentry/tracing": "^6.2.5",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@toast-ui/chart": "^4.1.4",
