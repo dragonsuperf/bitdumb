@@ -11,3 +11,8 @@ https://bitdumb.dragonsuperf.com
 - Redux Toolkit을 사용하여 상태관리
 - REST API로 이전 시세를 불러오고 틱 데이터는 websocket을 사용해 불러옴
 - 불러온 데이터는 Google Chart를 사용해 캔들 스틱 차트 형태로 보여주였음
+
+
+## Change Log
+https://github.com/dragonsuperf/bitdumb/blob/main/CHANGE-LOG.md
+- 개발과정과 후기를 다룬 
