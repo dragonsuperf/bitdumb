@@ -15,4 +15,4 @@ https://bitdumb.dragonsuperf.com
 
 ## Change Log
 https://github.com/dragonsuperf/bitdumb/blob/main/CHANGE-LOG.md
-- 개발과정과 후기를 다룬 
+- 개발과정과 후기를 다룬 글
